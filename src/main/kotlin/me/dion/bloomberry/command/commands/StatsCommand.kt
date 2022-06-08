@@ -1,6 +1,7 @@
 package me.dion.bloomberry.command.commands
 
 import me.dion.bloomberry.command.ISlashCommand
+import me.dion.bloomberry.util.Utils
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
 import java.awt.Color
@@ -18,8 +19,7 @@ class StatsCommand : ISlashCommand {
         val embedBuilder = EmbedBuilder()
             .setTitle("Bloomware stats")
             .setColor(Color.ORANGE)
-            .setAuthor("Bloomberry")
-            .addField("Current online", "test", true)
+            .addField("Current online", Utils.getOnline().toString(), true)
             .build()
 
         event.replyEmbeds(embedBuilder).setEphemeral(true).queue()

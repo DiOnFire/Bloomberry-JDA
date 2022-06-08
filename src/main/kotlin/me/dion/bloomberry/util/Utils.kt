@@ -3,13 +3,15 @@ package me.dion.bloomberry.util
 import com.google.gson.JsonParser
 import me.dion.bloomberry.Bloomberry
 import me.dion.bloomberry.traits.User
+import net.dv8tion.jda.api.entities.Role
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
 class Utils {
     companion object {
+        private val client = OkHttpClient.Builder().build()
+
         fun getUserData(userId: Long): User? {
-            val client = OkHttpClient.Builder().build()
             val request = Request.Builder()
                 .url("http://127.0.0.1:8000/api/users/discord?discord_id=${userId}&auth_key=${Bloomberry.TOKEN}")
                 .build()
@@ -30,6 +32,23 @@ class Utils {
                     json.get("create_date")!!.asString
                 )
             }
+        }
+
+        fun getOnline(): Int {
+            val request = Request.Builder()
+                .url("http://127.0.0.1:8000/api/client/stats")
+                .build()
+
+            val response = client.newCall(request).execute()
+            val json = JsonParser.parseString(response.body.string()).asJsonObject
+            return json.get("online").asInt
+        }
+
+        fun hasRole(roles: List<Role>, target: String): Boolean {
+            for (role in roles) {
+                if (role.name.contentEquals(target)) return true
+            }
+            return false
         }
     }
 }

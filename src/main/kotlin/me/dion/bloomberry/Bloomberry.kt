@@ -28,6 +28,9 @@ class Bloomberry {
             cmds.addCommands(
                 Commands.slash("account", "Shows info about your Bloomware account.")
             )
+            cmds.addCommands(
+                Commands.slash("requestrole", "Gives roles to you if they are available.")
+            )
 
             cmds.queue()
         }

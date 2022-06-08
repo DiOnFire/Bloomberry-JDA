@@ -21,14 +21,16 @@ class YourAccountCommand : ISlashCommand {
         event.replyEmbeds(createEmbed(event)).setEphemeral(true).queue()
     }
 
-    private fun check(id: Long): Boolean {
-        val user = Utils.getUserData(id)
-        return user != null
+    companion object {
+        fun check(id: Long): Boolean {
+            val user = Utils.getUserData(id)
+            return user != null
+        }
     }
 
     private fun createEmbed(event: SlashCommandInteractionEvent): MessageEmbed {
-        return if (check(event.member!!.id.toLong())) {
-            val user = Utils.getUserData(event.member!!.id.toLong())
+        return if (check(event.member!!.idLong)) {
+            val user = Utils.getUserData(event.member!!.idLong)
             EmbedBuilder()
                 .setColor(Color.GREEN)
                 .setTitle("Your account")
