@@ -8,7 +8,7 @@ import net.dv8tion.jda.api.interactions.commands.build.Commands
 
 class Bloomberry {
     companion object {
-        const val TOKEN = "OTY0NjQ0MzU2NzU1NzA5OTky.YlnpEA.fj9M7G3g7bAuxMthDd7fYi7h06A"
+        const val TOKEN = "ди нах токен аутдейтед"
 
         @JvmStatic
         fun main(args: Array<String>) {
