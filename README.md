@@ -1,2 +1,2 @@
 # Bloomberry-JDA
-d4j идет нахуй
+Public code of bot for Bloomware Client Discord server.
